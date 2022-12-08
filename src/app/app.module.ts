@@ -14,7 +14,6 @@ import { HeaderComponent } from './header/header.component';
 import { MomentPipe } from './shared/moment.pipe';
 import { TasksComponent } from './tasks/tasks.component';
 import { HttpClientModule } from '@angular/common/http';
-import { AbsenceComponent } from './absence/absence.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
@@ -23,9 +22,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     CalendarComponent,
     HeaderComponent,
     TasksComponent,
-    MomentPipe,
-    AbsenceComponent
-  ],
+    MomentPipe
+    ],
   imports: [
     BrowserModule,
     MatDatepickerModule,

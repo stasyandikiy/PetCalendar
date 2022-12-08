@@ -1,0 +1,35 @@
+<table>
+    <thead>
+    <tr>
+        <th>Mon</th>
+        <th>Tue</th>
+        <th>Wed</th>
+        <th>Thu</th>
+        <th>Fri</th>
+        <th>Sat</th>
+        <th>Sun</th>
+
+    </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let week of calendar">
+            <td *ngFor="let day of week.days"
+            [class.disabled]="day.disabled"
+            (click)="select(day.value)">
+                
+                <span   
+                    [class.selected]="day.selected"
+                    [class.active]="day.active"
+                >{{day.value | moment: 'D'}}</span>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<div class="block-entry">
+    <h2 (click)="toogle()"> ▼Vacation</h2>
+    <div *ngIf="show">
+        <p><strong>Breakdown for 2002</strong></p>
+        <p>Entitlement<i>10 days</i></p>
+        <p>Taken<i>1 day</i></p>
+    </div>
+</div>
