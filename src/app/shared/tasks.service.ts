@@ -10,24 +10,22 @@ export interface Task {
 }
 
 interface CreateResponse{
-    name: string
+    name: string;
 }
 @Injectable({providedIn: 'root'})
 
 export class TasksService {
-    static  url = 'https://taskspet-default-rtdb.firebaseio.com/'
+    static  url = 'https://taskspet-default-rtdb.firebaseio.com/';
 
-    constructor(public http: HttpClient) {
-        
-    }
+    constructor(public http: HttpClient) {  }
 
     load(date:moment.Moment):Observable<Task[]> {
         return this.http.get<Task[]>(`${TasksService.url}/${date.format('DD-MM-YYYY')}.json`)
         .pipe(map(tasks=>{
             if(!tasks) {
-                return []
+                return [];
             }
-            return Object.keys(tasks).map(key=>({...tasks[key], id: key}))
+            return Object.keys(tasks).map(key=>({...tasks[key], id: key}));
         }))
  
     }
@@ -41,6 +39,6 @@ export class TasksService {
     }
     remove(task:Task):Observable<void> {
         return this.http
-        .delete<void>(`${TasksService.url}/${task.date}/${task.id}.json`)
+        .delete<void>(`${TasksService.url}/${task.date}/${task.id}.json`);
     }
 }

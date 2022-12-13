@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import * as moment from 'moment';
 import { DateService } from '../shared/date.service';
+import { AbsenceSchedule } from '../shared/Absence';
 
 interface Day {
   value: moment.Moment,
@@ -9,7 +10,7 @@ interface Day {
   selected: boolean
 }
 interface Week {
-  days:  Day[]
+  days:  Day[];
 }
 
 @Component({
@@ -18,15 +19,18 @@ interface Week {
   styleUrls: ['./calendar.component.scss']
 })
 export class CalendarComponent implements OnInit {
+
+  constructor(public dateService: DateService) { 
+
+  }
+
+
   show: boolean = true;
   toogle(){
     this.show=!this.show;
   }
   calendar: Week[] = [];
 
-  constructor(public dateService: DateService) { 
-
-  }
 
   ngOnInit(): void {
     this.dateService.date.subscribe(this.generate.bind(this));
@@ -43,10 +47,10 @@ export class CalendarComponent implements OnInit {
     while(date.isBefore(endDay, 'day')) {
       calendar.push({
         days: Array(7).fill(0).map( ()=>{
-          const value = date.add(1, 'day').clone()
-          const active = moment().isSame(value, 'date')
-          const disabled = !now.isSame(value, 'month')
-          const selected = now.isSame(value, 'date')
+          const value = date.add(1, 'day').clone();
+          const active = moment().isSame(value, 'date');
+          const disabled = !now.isSame(value, 'month');
+          const selected = now.isSame(value, 'date');
 
           return {
             value, active,disabled, selected
@@ -57,7 +61,7 @@ export class CalendarComponent implements OnInit {
     this.calendar = calendar
   }
   select(day: moment.Moment){
-    this.dateService.changeDate(day)
+    this.dateService.changeDate(day);
   }
 
 }

@@ -1,4 +1,4 @@
-<table>
+<table class="table">
     <thead>
     <tr>
         <th>Mon</th>
@@ -16,8 +16,8 @@
             <td *ngFor="let day of week.days"
             [class.disabled]="day.disabled"
             (click)="select(day.value)">
-                
-                <span   
+                <div  class="time-off">vacation</div>
+                <span 
                     [class.selected]="day.selected"
                     [class.active]="day.active"
                 >{{day.value | moment: 'D'}}</span>
@@ -29,7 +29,7 @@
     <h2 (click)="toogle()"> ▼Vacation</h2>
     <div *ngIf="show">
         <p><strong>Breakdown for 2002</strong></p>
-        <p>Entitlement<i>10 days</i></p>
-        <p>Taken<i>1 day</i></p>
+        <p>Entitlement<i>10</i> days</p>
+        <p>Taken<i>1</i> day</p>
     </div>
 </div>
