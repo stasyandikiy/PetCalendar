@@ -1,0 +1,20 @@
+h1{
+    font-size: 26px;
+    border-bottom: 1px solid black;
+}
+
+p{
+    display: flex;
+    width: 200px;
+    align-items: center;
+    justify-content: center;
+    span{
+        margin: 0 8px;
+        text-align: center;
+    }
+    button{
+        cursor: pointer;
+        padding: 3px;
+        width: 30px;
+    }
+}

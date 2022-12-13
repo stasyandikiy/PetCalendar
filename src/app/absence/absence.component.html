@@ -1,0 +1,23 @@
+<button (click)="toogle()" mat-button color="primary" type="submit">Data Picker</button>
+
+<div class="blockAbsence" *ngIf="showMe">
+    <h3>Request Absence</h3>
+
+    <span>What type of absence?</span>
+    <mat-form-field>
+        <mat-label></mat-label>
+        <mat-select [(value)]="selectedValue">
+            <mat-option value="Sick">Sick</mat-option>
+            <mat-option value="Vacation ">Vacation</mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <span >From - To</span>
+    <input type="date"> <input type="date">
+
+    <span>Comment</span>
+    <textarea [formControl]="textareaControl" placeholder="Add a comment.."></textarea>
+    
+    <button mat-button color="primary" type="submit" (click)="toogle()">Cancel</button>
+    <button mat-button color="basic" type="submit">Request</button>
+</div>
